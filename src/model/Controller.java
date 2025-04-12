@@ -49,7 +49,24 @@ public class Controller {
         return matriz2;
     }
 
+    public MatrizNumerica sumaMatrices() {
+        int filas = matriz1.getMatriz().length;
+        int columnas = matriz1.getMatriz()[0].length;
 
+        MatrizNumerica resultado = new MatrizNumerica(filas, columnas);
 
+        for (int i = 0; i < filas; i++){
+            for (int j = 0; j < columnas; j++ ){
+                int resultSuma = matriz1.getMatriz()[i][j] + matriz2.getMatriz()[i][j];
+                resultado.insertarValor(i, j, resultSuma);
+            }
+        }
+        return resultado;
+    }
+
+    public void crearMatriz(int filas, int columnas){
+        matriz1 = new MatrizNumerica(filas, columnas);
+        matriz2 = new MatrizNumerica(filas, columnas);
+    }
 
 }

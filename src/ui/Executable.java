@@ -35,26 +35,48 @@ public class Executable {
 
     public void run() {
 
-        System.out.println("Inserte los numeros de la matriz 1: ");
-        for(int i = 0; i < 2; i++) {
-            for(int j = 0; j < 2; j++) {
-                System.out.println("Insertar dato en fila " + i + " y columna " + j + " : ");
-                int valor = escaner.nextInt();
-                escaner.nextLine();
-                cont.getMatriz1().insertarValor(i, j, valor);
-            }
-        }
-    
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 2; j++) {
-                System.out.print(cont.getMatriz1().getMatriz()[i][j] + " ");
-            }
-            System.out.println();
-        }
+    System.out.println("¿Cuántas filas desea para las matrices?");
+    int filas = escaner.nextInt();
+    escaner.nextLine();
 
+    System.out.println("¿Cuántas columnas desea para las matrices?");
+    int columnas = escaner.nextInt();
+    escaner.nextLine();
+
+    cont.crearMatrices(filas, columnas);
+
+    System.out.println("Inserte los números para la matriz 1:");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            System.out.print("Fila " + i + ", Columna " + j + ": ");
+            int valor = escaner.nextInt();
+            escaner.nextLine();
+            cont.getMatriz1().insertarValor(i, j, valor);
+        }
     }
 
-    /**
+    System.out.println("Inserte los números para la matriz 2:");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            System.out.print("Fila " + i + ", Columna " + j + ": ");
+            int valor = escaner.nextInt();
+            escaner.nextLine();
+            cont.getMatriz2().insertarValor(i, j, valor);
+        }
+    }
+
+    System.out.println("\nMatriz Resultado (suma de las dos matrices):");
+    int[][] resultado = cont.sumarMatrices().getMatriz();
+
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            System.out.print(resultado[i][j] + " ");
+        }
+        System.out.println();
+    }
+
+}
+     /**
      * Método principal (main) para iniciar la ejecución del programa.
      *
      * @pre No se requieren precondiciones específicas.
@@ -68,5 +90,4 @@ public class Executable {
         mainApp.run();
 
     }
-
 }
